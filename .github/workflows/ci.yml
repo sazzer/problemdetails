@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      RUST_TOOLCHAIN: nightly
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+          override: true
+          components: clippy
+
+      - uses: Swatinem/rust-cache@v1
+        with:
+          cache-on-failure: true
+          key: ${{ env.RUST_TOOLCHAIN }}
+
+      - name: Run clippy
+        uses: actions-rs/clippy-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+          args: --all
+
+  test:
+    strategy:
+      matrix:
+        RUST_TOOLCHAIN:
+          - stable
+          - beta
+          - nightly
+    runs-on: ubuntu-latest
+    env:
+      RUST_BACKTRACE: full
+      RUST_LOG: debug
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.RUST_TOOLCHAIN }}
+          override: true
+
+      - uses: Swatinem/rust-cache@v1
+        with:
+          cache-on-failure: true
+          key: ${{ matrix.RUST_TOOLCHAIN }}
+
+      - name: Run cargo test
+        run: cargo test
