@@ -5,6 +5,7 @@
     clippy::unused_self
 )]
 
+#[cfg(feature = "axum")]
 mod axum;
 
 use std::collections::BTreeMap;
@@ -13,6 +14,7 @@ use http::StatusCode;
 use serde_json::Value;
 
 /// Representation of a Problem error to return to the client.
+#[allow(dead_code)] // These fields are used by the various features.
 pub struct Problem {
     status_code: StatusCode,
     body:        BTreeMap<String, Value>,

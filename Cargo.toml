@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum = "0.5.11"
+axum = { version = "0.5.11", optional = true}
 http = "0.2.8"
 serde = { version = "1.0.137", features = ["derive"] }
 serde_json = { version = "1.0.81", features = ["preserve_order"] }
@@ -15,3 +15,5 @@ hyper = { version = "0.14.20", features = ["full"] }
 insta = "1.15.0"
 tokio = { version = "1.19.2", features = ["full"] }
 
+[features]
+axum = ["dep:axum"]
