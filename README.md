@@ -40,7 +40,7 @@ HTTP Server support is behind feature flags for the appropriate HTTP Server. As 
 
 Currently supported features are:
 
-- axum - For the [Axum](https://crates.io/crates/axum) HTTP Server.
+- `axum` - For the [Axum](https://crates.io/crates/axum) HTTP Server.
 
 ## Safety
 

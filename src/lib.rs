@@ -40,7 +40,7 @@
 //! enable the correct feature for the HTTP Server that you are using.
 //!
 //! Currently supported features are:
-//! * axum - For the [Axum](https://crates.io/crates/axum) HTTP Server.
+//! * `axum` - For the [Axum](https://crates.io/crates/axum) HTTP Server.
 
 #[cfg(feature = "axum")]
 mod axum;
