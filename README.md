@@ -9,6 +9,7 @@ This crate provides an implementation of a Problem Details response for HTTP API
 ## Example Usage
 
 The following is a valid handler for Axum that returns the Forbidden example from [RFC-7807 Section 3](https://datatracker.ietf.org/doc/html/rfc7807#section-3):
+
 ```rust
 async fn forbidden() -> problemdetails::Result<String> {
     Err(problemdetails::new(StatusCode::FORBIDDEN)
@@ -21,9 +22,14 @@ async fn forbidden() -> problemdetails::Result<String> {
 }
 ```
 
+When used with a supported HTTP Server, this will automatically generate the correct JSON response and set the Content-Type header to the correct value of `application/problem+json`.
+
+If used with an unsupported HTTP Server, the status code and body of the problem details can be extracted and sent manually. The `body` field is in the correct structure to format into JSON using something like `serde` already, so serializing it should be as simple as the HTTP Server allows for.
+
 ## Supported HTTP Servers
 
-Currently this is only supported with the following HTTP Servers: 
+Currently this is only supported with the following HTTP Servers:
+
 - [Axum](https://crates.io/crates/axum)
 
 Examples of use with the different HTTP Servers can be found in the [examples](https://github.com/sazzer/problemdetails/tree/main/examples) directory.

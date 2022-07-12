@@ -6,6 +6,36 @@
     clippy::unused_self
 )]
 
+//! This crate provides an implementation of a Problem Details response for HTTP APIs, as defined
+//! in [RFC-7807](https://datatracker.ietf.org/doc/html/rfc7807). This is a standard way for HTTP
+//! APIs to indicate that a problem occurred with the request, including some standard payload
+//! fields as required.
+//!
+//! When used with a supported HTTP Server, this will automatically generate the correct JSON response
+//! and set the Content-Type header to the correct value of `application/problem+json`.
+//!
+//! If used with an unsupported HTTP Server, the status code and body of the problem details can be
+//! extracted and sent manually. The `body` field is in the correct structure to format into JSON using
+//! something like `serde` already, so serializing it should be as simple as the HTTP Server allows for.
+//!
+//! # Examples
+//! ## Create an empty problem.
+//! ```
+//! # use http::StatusCode;
+//! problemdetails::new(StatusCode::BAD_REQUEST);
+//! ```
+//! ## Create a populated problem.
+//! ```
+//! # use http::StatusCode;
+//! problemdetails::new(StatusCode::FORBIDDEN)
+//!   .with_type("https://example.com/probs/out-of-credit")
+//!   .with_title("You do not have enough credit.")
+//!   .with_detail("Your current balance is 30, but that costs 50.")
+//!   .with_instance("/account/12345/msgs/abc")
+//!   .with_value("balance", 30)
+//!   .with_value("accounts", vec!["/account/12345", "/account/67890"]);
+//! ```
+
 #[cfg(feature = "axum")]
 mod axum;
 
@@ -17,11 +47,14 @@ use serde_json::Value;
 /// Representation of a Problem error to return to the client.
 #[allow(dead_code)] // These fields are used by the various features.
 pub struct Problem {
-    status_code: StatusCode,
-    body:        BTreeMap<String, Value>,
+    /// The status code of the problem.
+    pub status_code: StatusCode,
+    /// The actual body of the problem.
+    pub body: BTreeMap<String, Value>,
 }
 
 /// Create a new `Problem` response to send to the client.
+
 #[must_use]
 pub fn new<S>(status_code: S) -> Problem
 where
@@ -29,7 +62,7 @@ where
 {
     Problem {
         status_code: status_code.into(),
-        body:        BTreeMap::new(),
+        body: BTreeMap::new(),
     }
 }
 
@@ -100,4 +133,3 @@ impl Problem {
 
 /// Result type where the error is always a `Problem`.
 pub type Result<T> = std::result::Result<T, Problem>;
-
