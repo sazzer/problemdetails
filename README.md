@@ -34,6 +34,14 @@ Currently this is only supported with the following HTTP Servers:
 
 Examples of use with the different HTTP Servers can be found in the [examples](https://github.com/sazzer/problemdetails/tree/main/examples) directory.
 
+# Features
+
+HTTP Server support is behind feature flags for the appropriate HTTP Server. As such, you will need to enable the correct feature for the HTTP Server that you are using.
+
+Currently supported features are:
+
+- axum - For the [Axum](https://crates.io/crates/axum) HTTP Server.
+
 ## Safety
 
 This crate uses `#![forbid(unsafe_code)]` to ensure everything is implemented in 100% safe Rust.

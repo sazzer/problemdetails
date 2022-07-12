@@ -35,6 +35,12 @@
 //!   .with_value("balance", 30)
 //!   .with_value("accounts", vec!["/account/12345", "/account/67890"]);
 //! ```
+//! # Features
+//! HTTP Server support is behind feature flags for the appropriate HTTP Server. As such, you will need to
+//! enable the correct feature for the HTTP Server that you are using.
+//!
+//! Currently supported features are:
+//! * axum - For the [Axum](https://crates.io/crates/axum) HTTP Server.
 
 #[cfg(feature = "axum")]
 mod axum;
