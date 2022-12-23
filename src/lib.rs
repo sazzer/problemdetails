@@ -137,5 +137,13 @@ impl Problem {
     }
 }
 
+impl<S> From<S> for Problem
+where
+    S: Into<StatusCode>,
+{
+    fn from(status_code: S) -> Self {
+        new(status_code.into())
+    }
+}
 /// Result type where the error is always a `Problem`.
 pub type Result<T> = std::result::Result<T, Problem>;
