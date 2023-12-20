@@ -45,7 +45,7 @@
 //! * `axum` - For the [Axum](https://crates.io/crates/axum) HTTP Server.
 
 #[cfg(feature = "axum")]
-mod axum;
+pub mod axum;
 
 use std::collections::BTreeMap;
 
@@ -54,6 +54,7 @@ use serde_json::Value;
 
 /// Representation of a Problem error to return to the client.
 #[allow(dead_code)] // These fields are used by the various features.
+#[derive(Debug, Clone)]
 pub struct Problem {
     /// The status code of the problem.
     pub status_code: StatusCode,
