@@ -3,11 +3,11 @@ name = "problemdetails"
 version = "0.3.0"
 edition = "2021"
 license = "MIT"
-description = "Support for Problem Details (RFC-7807) responses in HTTP APIs"
+description = "Support for Problem Details (RFC-7807 / RFC-9457) responses in HTTP APIs"
 homepage = "https://github.com/sazzer/problemdetails/"
 repository = "https://github.com/sazzer/problemdetails/"
 readme = "README.md"
-keywords = ["rfc-7807", "http", "problemdetails"]
+keywords = ["rfc-7807", "rfc-8457", "http", "problemdetails"]
 categories = ["web-programming::http-server", "api-bindings"]
 
 [dependencies]

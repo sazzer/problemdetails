@@ -4,11 +4,11 @@
 [![Crates.io](https://img.shields.io/crates/v/problemdetails)](https://crates.io/crates/problemdetails)
 [![Documentation](https://docs.rs/problemdetails/badge.svg)](https://docs.rs/problemdetails)
 
-This crate provides an implementation of a Problem Details response for HTTP APIs, as defined in [RFC-7807](https://datatracker.ietf.org/doc/html/rfc7807). This is a standard way for HTTP APIs to indicate that a problem occurred with the request, including some standard payload fields as required.
+This crate provides an implementation of a Problem Details response for HTTP APIs, as defined in [RFC-7807](https://datatracker.ietf.org/doc/html/rfc7807) / [RFC-9457](https://datatracker.ietf.org/doc/html/rfc9457). This is a standard way for HTTP APIs to indicate that a problem occurred with the request, including some standard payload fields as required.
 
 ## Example Usage
 
-The following is a valid handler for Axum that returns the Forbidden example from [RFC-7807 Section 3](https://datatracker.ietf.org/doc/html/rfc7807#section-3):
+The following is a valid handler for Axum that returns the Forbidden example from [RFC-9457 Section 3](https://datatracker.ietf.org/doc/html/rfc9457#section-3):
 
 ```rust
 async fn forbidden() -> problemdetails::Result<String> {

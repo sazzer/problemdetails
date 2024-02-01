@@ -8,7 +8,8 @@
 )]
 
 //! This crate provides an implementation of a Problem Details response for HTTP APIs, as defined
-//! in [RFC-7807](https://datatracker.ietf.org/doc/html/rfc7807). This is a standard way for HTTP
+//! in [RFC-7807](https://datatracker.ietf.org/doc/html/rfc7807) /
+//! [RFC-9457](https://datatracker.ietf.org/doc/html/rfc9457). This is a standard way for HTTP
 //! APIs to indicate that a problem occurred with the request, including some standard payload
 //! fields as required.
 //!
