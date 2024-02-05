@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 problemdetails = { path = "../..", features = ["axum"] }
 
-axum = { version = "0.7.1" }
+axum = { version = "0.7.1", features = ["macros"] }
 http = "1.0.0"
 serde = { version = "1.0.193", features = ["derive"] }
 serde_json = { version = "1.0.108", features = ["preserve_order"] }
