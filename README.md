@@ -48,7 +48,7 @@ This crate uses `#![forbid(unsafe_code)]` to ensure everything is implemented in
 
 ## Minimum supported Rust version
 
-The MSRV for `problemdetails` is 1.60.0. However, the HTTP Servers that are used with it might need a higher version.
+The MSRV for `problemdetails` is 1.78.0. However, the HTTP Servers that are used with it might need a higher version.
 
 ## License
 
