@@ -64,7 +64,6 @@ pub struct Problem {
 }
 
 /// Create a new `Problem` response to send to the client.
-
 #[must_use]
 pub fn new<S>(status_code: S) -> Problem
 where
