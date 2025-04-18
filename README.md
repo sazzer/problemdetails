@@ -31,6 +31,7 @@ If used with an unsupported HTTP Server, the status code and body of the problem
 Currently this is only supported with the following HTTP Servers:
 
 - [Axum](https://crates.io/crates/axum)
+- [Poem](https://crates.io/crates/poem)
 
 Examples of use with the different HTTP Servers can be found in the [examples](https://github.com/sazzer/problemdetails/tree/main/examples) directory.
 
@@ -41,6 +42,7 @@ HTTP Server support is behind feature flags for the appropriate HTTP Server. As 
 Currently supported features are:
 
 - `axum` - For the [Axum](https://crates.io/crates/axum) HTTP Server.
+- `poem` - For the [Poem](https://crates.io/crates/poem) HTTP Server.
 
 ## Safety
 

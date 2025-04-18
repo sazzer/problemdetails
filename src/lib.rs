@@ -44,9 +44,12 @@
 //!
 //! Currently supported features are:
 //! * `axum` - For the [Axum](https://crates.io/crates/axum) HTTP Server.
+//! * `poem` - For the [Axum](https://crates.io/crates/poem) HTTP Server.
 
 #[cfg(feature = "axum")]
 pub mod axum;
+#[cfg(feature = "poem")]
+pub mod poem;
 
 use std::collections::BTreeMap;
 
