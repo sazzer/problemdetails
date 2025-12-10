@@ -19,9 +19,10 @@ impl IntoResponse for Problem {
             let body = Json(self.body);
             let mut response = (self.status_code, body).into_response();
 
-            response
-                .headers_mut()
-                .insert(CONTENT_TYPE, "application/problem+json".parse().unwrap());
+            response.headers_mut().insert(
+                CONTENT_TYPE,
+                HeaderValue::from_static("application/problem+json"),
+            );
             response
         }
     }
