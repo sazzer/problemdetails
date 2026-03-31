@@ -7,6 +7,7 @@ use axum::{
     response::{IntoResponse, Response},
     Json,
 };
+use http::HeaderValue;
 use tower_http::catch_panic::{CatchPanicLayer, ResponseForPanic};
 
 use super::Problem;
@@ -115,7 +116,11 @@ mod tests {
         let router = axum::Router::new()
             .route(
                 "/panic",
-                axum::routing::get(|| async { panic!("Panic message") }),
+                axum::routing::get(|| async {
+                    panic!("Panic message");
+                    #[allow(unreachable_code)]
+                    ()
+                }),
             )
             .layer(crate::axum::PanicHandlerBuilder::new().build());
 
@@ -140,7 +145,11 @@ mod tests {
         let router = axum::Router::new()
             .route(
                 "/panic",
-                axum::routing::get(|| async { panic!("Panic message") }),
+                axum::routing::get(|| async {
+                    panic!("Panic message");
+                    #[allow(unreachable_code)]
+                    ()
+                }),
             )
             .layer(
                 crate::axum::PanicHandlerBuilder::new()
@@ -168,7 +177,11 @@ mod tests {
         let router = axum::Router::new()
             .route(
                 "/panic",
-                axum::routing::get(|| async { panic!("Panic message") }),
+                axum::routing::get(|| async {
+                    panic!("Panic message");
+                    #[allow(unreachable_code)]
+                    ()
+                }),
             )
             .layer(
                 crate::axum::PanicHandlerBuilder::new()
