@@ -102,7 +102,7 @@ mod tests {
             axum::routing::get(|| async { crate::new(StatusCode::BAD_REQUEST) }),
         );
 
-        let test_server = axum_test::TestServer::new(router).unwrap();
+        let test_server = axum_test::TestServer::new(router);
 
         let response = test_server.get("/test").await;
 
@@ -124,7 +124,7 @@ mod tests {
             )
             .layer(crate::axum::PanicHandlerBuilder::new().build());
 
-        let test_server = axum_test::TestServer::new(router).unwrap();
+        let test_server = axum_test::TestServer::new(router);
 
         let response = test_server.get("/panic").await;
 
@@ -157,7 +157,7 @@ mod tests {
                     .build(),
             );
 
-        let test_server = axum_test::TestServer::new(router).unwrap();
+        let test_server = axum_test::TestServer::new(router);
 
         let response = test_server.get("/panic").await;
 
@@ -191,7 +191,7 @@ mod tests {
                     .build(),
             );
 
-        let test_server = axum_test::TestServer::new(router).unwrap();
+        let test_server = axum_test::TestServer::new(router);
 
         let response = test_server.get("/panic").await;
 
@@ -222,7 +222,7 @@ mod tests {
             }),
         );
 
-        let test_server = axum_test::TestServer::new(router).unwrap();
+        let test_server = axum_test::TestServer::new(router);
 
         let response = test_server.get("/test").await;
 
@@ -267,7 +267,7 @@ mod tests {
             }),
         );
 
-        let test_server = axum_test::TestServer::new(router).unwrap();
+        let test_server = axum_test::TestServer::new(router);
 
         let response = test_server.get("/test").await;
 
